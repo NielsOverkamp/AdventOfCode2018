@@ -1,6 +1,4 @@
-from collections import Counter
-
-inp="""ubkfmdjxyzlbgkrotcepvswaqx
+inp = """ubkfmdjxyzlbgkrotcepvswaqx
 uikfmdkuyzlbgerotcepvswaqh
 uikfmdpxyzlbgnrotcepvswoeh
 nikfmdjxyzlbgnrotqepvswyqh
@@ -253,28 +251,30 @@ uikfmdjxuzlbgnrotcepvsvaqc"""
 
 inp_list = inp.split('\n')
 
+
 def check(code1, code2):
-  if code1 == code2:
-    return False
-  elif len(code1) == 1:
-    return True
-  else:
-    n = len(code1)//2
-    return check(code1[n:], code2[n:]) != check(code1[:n], code2[:n])
+    if code1 == code2:
+        return False
+    elif len(code1) == 1:
+        return True
+    else:
+        n = len(code1) // 2
+        return check(code1[n:], code2[n:]) != check(code1[:n], code2[:n])
+
 
 for code1 in inp_list:
-  for code2 in inp_list:
-    strike = False
-    for c1, c2 in zip(code1, code2):
-        if c1 != c2:
-          if strike:
-            break
-          else:
-            strike = True
+    for code2 in inp_list:
+        strike = False
+        for c1, c2 in zip(code1, code2):
+            if c1 != c2:
+                if strike:
+                    break
+                else:
+                    strike = True
+        else:
+            if strike:
+                print(code1, code2)
+                break
     else:
-      if strike:
-        print(code1, code2)
-        break
-  else:
-    continue
-  break
+        continue
+    break

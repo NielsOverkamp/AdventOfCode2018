@@ -998,19 +998,18 @@ inp = """-14
 +78549"""
 
 res = 0
-visited = {}
-visited[res] = True
+visited = {0: True}
 while True:
-  for op in inp.split('\n'):
-    if op[0] == '+':
-      res += int(op[1:])
+    for op in inp.split('\n'):
+        if op[0] == '+':
+            res += int(op[1:])
+        else:
+            res -= int(op[1:])
+        if res in visited:
+            print(res)
+            break
+        else:
+            visited[res] = True
     else:
-      res -= int(op[1:])
-    if res in visited:
-      print(res)
-      break
-    else:
-      visited[res] = True
-  else:
-    continue
-  break
+        continue
+    break
