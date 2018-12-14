@@ -1,3 +1,5 @@
+from time import sleep
+
 inp = r"""                                                                                                   /--------------------\                             
                                  /-------------------------------------------\                     |                    |       /-------------------\ 
                                  |                   /----------\    /-------+---------------------+-\                  |       |                   | 
@@ -420,8 +422,8 @@ dirs = {(0, 1): "east", (0, -1): "west", (-1, 0): "north", (1, 0): "south"}
 
 tick = 0
 
-mx = 7
-my = 7
+mx = max(tracks.keys())[0] + 1
+my = max(tracks.keys(), key=lambda t: t[1])[1] + 1
 crashed = set()
 while True:
     # print_board(tracks, mx, my)
